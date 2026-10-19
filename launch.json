@@ -1,0 +1,32 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "RISC-V OpenOCD Debug",
+            "type": "cortex-debug",
+            "request": "launch",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceRoot}/build/your_firmware.elf", // Путь к скомпилированному .elf файлу
+            "servertype": "openocd",
+            
+            // Укажите архитектуру RISC-V принудительно
+            "interface": "jtag", 
+            "toolchainPrefix": "riscv64-none-elf", // Префикс вашей команды компилятора (без -gcc)
+            
+            // Абсолютный путь к папке bin вашего RISC-V тулчейна (если он не добавлен в PATH системы)
+            "toolchainPath": "/home/boxinrome/Desktop/xpack-riscv-none-elf-gcc-15.2.0-1/bin", 
+            
+            // Путь к исполняемому файлу OpenOCD в Linux
+            "serverpath": "/usr/bin/openocd", 
+            
+            // Конфигурационные файлы OpenOCD для вашего программатора и RISC-V чипа
+            "configFiles": [
+                "interface/ftdi/ch347.cfg",   // Пример: ваш программатор
+                "target/gigaDevice_gd32vf103.cfg" // Пример: ваш RISC-V микроконтроллер
+            ],
+            
+            "runToEntryPoint": "main" // Остановиться на старте функции main()
+        }
+    ]
+}
+// MDR1206
