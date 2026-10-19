@@ -1,0 +1,103 @@
+   1              	# 0 "../Library/SPL/src/MDR32VF0xI_asm.S"
+   2              	# 1 "C:\\Users\\aleks\\Desktop\\hack_milandr\\mdr1206\\ExampleProjects\\MDR32VF0xI\\MDR1206\\Eclips
+   0              	
+   0              	
+   0              	
+   1              	/**
+   2              	 *******************************************************************************
+   3              	 * @file    MDR32VF0xI_asm.S
+   4              	 * @author  Milandr Application Team
+   5              	 * @version V0.2.0
+   6              	 * @date    10/04/2025
+   7              	 * @brief   This file contains assembler functions.
+   8              	 *******************************************************************************
+   9              	 * <br><br>
+  10              	 *
+  11              	 * THE PRESENT FIRMWARE IS FOR GUIDANCE ONLY. IT AIMS AT PROVIDING CUSTOMERS
+  12              	 * WITH CODING INFORMATION REGARDING MILANDR'S PRODUCTS IN ORDER TO FACILITATE
+  13              	 * THE USE AND SAVE TIME. MILANDR SHALL NOT BE HELD LIABLE FOR ANY
+  14              	 * DIRECT, INDIRECT OR CONSEQUENTIAL DAMAGES RESULTING
+  15              	 * FROM THE CONTENT OF SUCH FIRMWARE AND/OR A USE MADE BY CUSTOMERS OF THE
+  16              	 * CODING INFORMATION CONTAINED HEREIN IN THEIR PRODUCTS.
+  17              	 *
+  18              	 * <h2><center>&copy; COPYRIGHT 2025 Milandr</center></h2>
+  19              	 *******************************************************************************
+  20              	 */
+  21              	
+  22              	#if defined ( __IASMRISCV__ ) /* IAR RISCV compiler. */
+  23              	    SECTION `.ram_text`:CODE:NOROOT(2)
+  24              	#endif
+  25              	
+  26              	;/**
+  27              	;  * @brief   Perform a blocking program delay in loops.
+  28              	;  * @note    Register a0 is not stored on the stack because it is non preserved register (saved by
+  29              	;  * @param   Loops: Specify the delay time in loops.
+  30              	;  * @return  None.
+  31              	;  */
+  32              	#if defined ( __GNUC__ ) /* GCC compiler. */
+  33              	    .section .ram_text.DELAY_PROGRAM_WaitLoopsAsm, "ax"
+  35              	    .globl DELAY_PROGRAM_WaitLoopsAsm
+  36              	#elif defined ( __IASMRISCV__ )  /* IAR RISCV compiler. */
+  37              	    PUBLIC DELAY_PROGRAM_WaitLoopsAsm
+  38              	#endif
+  39              	DELAY_PROGRAM_WaitLoopsAsm:
+  40 0000 19C1     	    beqz a0, DELAY_PROGRAM_Exit
+  41              	DELAY_PROGRAM_Loop:
+  42 0002 7D15     	    addi a0, a0, -1
+  43 0004 7DFD     	    bnez a0, DELAY_PROGRAM_Loop
+  44              	DELAY_PROGRAM_Exit:
+  45 0006 8280     	    ret
+  46              	
+  47              	;/**
+  48              	;  * @brief   Perform a blocking delay with a cycle counter, in ticks.
+  49              	;  * @note    Registers a0-a2 are not stored on the stack because it is non preserved register (sav
+  50              	;  * @param   Ticks: Specify the delay time in ticks.
+  51              	;  * @return  None.
+  52              	;  */
+  53              	#if defined ( __GNUC__ ) /* GCC compiler. */
+  54              	    .section .ram_text.DELAY_CycleCounter_WaitTicksAsm, "ax"
+  56              	    .globl DELAY_CycleCounter_WaitTicksAsm
+  57              	#elif defined ( __IASMRISCV__ )  /* IAR RISCV compiler. */
+  58              	    PUBLIC DELAY_CycleCounter_WaitTicksAsm
+  59              	#endif
+  60              	DELAY_CycleCounter_WaitTicksAsm:
+  61 0000 F32500C0 	    rdcycle a1
+  62              	DELAY_CycleCounter_Loop:
+  63 0004 732600C0 	    rdcycle a2
+  64 0008 0D8E     	    sub     a2, a2, a1
+  65 000a E36DA6FE 	    bltu    a2, a0, DELAY_CycleCounter_Loop
+  66 000e 8280     	    ret
+DEFINED SYMBOLS
+../Library/SPL/src/MDR32VF0xI_asm.S:39     .ram_text.DELAY_PROGRAM_WaitLoopsAsm:00000000 DELAY_PROGRAM_WaitLoopsAsm
+../Library/SPL/src/MDR32VF0xI_asm.S:40     .ram_text.DELAY_PROGRAM_WaitLoopsAsm:00000000 $xrv32i2p1_m2p0_c2p0_b1p0_zicntr2p0_zicsr2p0_zifencei2p0_zmmul1p0_zca1p0_zba1p0_zbb1p0_zbc1p0_zbkb1p0_zbkc1p0_zbkx1p0_zbs1p0_zkn1p0_zknd1p0_zkne1p0_zknh1p0_zks1p0_zksed1p0_zksh1p0
+../Library/SPL/src/MDR32VF0xI_asm.S:44     .ram_text.DELAY_PROGRAM_WaitLoopsAsm:00000006 DELAY_PROGRAM_Exit
+../Library/SPL/src/MDR32VF0xI_asm.S:40     .ram_text.DELAY_PROGRAM_WaitLoopsAsm:00000000 .L0 
+../Library/SPL/src/MDR32VF0xI_asm.S:41     .ram_text.DELAY_PROGRAM_WaitLoopsAsm:00000002 DELAY_PROGRAM_Loop
+../Library/SPL/src/MDR32VF0xI_asm.S:42     .ram_text.DELAY_PROGRAM_WaitLoopsAsm:00000002 .L0 
+../Library/SPL/src/MDR32VF0xI_asm.S:43     .ram_text.DELAY_PROGRAM_WaitLoopsAsm:00000004 .L0 
+../Library/SPL/src/MDR32VF0xI_asm.S:45     .ram_text.DELAY_PROGRAM_WaitLoopsAsm:00000006 .L0 
+../Library/SPL/src/MDR32VF0xI_asm.S:60     .ram_text.DELAY_CycleCounter_WaitTicksAsm:00000000 DELAY_CycleCounter_WaitTicksAsm
+../Library/SPL/src/MDR32VF0xI_asm.S:61     .ram_text.DELAY_CycleCounter_WaitTicksAsm:00000000 $xrv32i2p1_m2p0_c2p0_b1p0_zicntr2p0_zicsr2p0_zifencei2p0_zmmul1p0_zca1p0_zba1p0_zbb1p0_zbc1p0_zbkb1p0_zbkc1p0_zbkx1p0_zbs1p0_zkn1p0_zknd1p0_zkne1p0_zknh1p0_zks1p0_zksed1p0_zksh1p0
+../Library/SPL/src/MDR32VF0xI_asm.S:61     .ram_text.DELAY_CycleCounter_WaitTicksAsm:00000000 .L0 
+../Library/SPL/src/MDR32VF0xI_asm.S:62     .ram_text.DELAY_CycleCounter_WaitTicksAsm:00000004 DELAY_CycleCounter_Loop
+../Library/SPL/src/MDR32VF0xI_asm.S:63     .ram_text.DELAY_CycleCounter_WaitTicksAsm:00000004 .L0 
+../Library/SPL/src/MDR32VF0xI_asm.S:64     .ram_text.DELAY_CycleCounter_WaitTicksAsm:00000008 .L0 
+../Library/SPL/src/MDR32VF0xI_asm.S:65     .ram_text.DELAY_CycleCounter_WaitTicksAsm:0000000a .L0 
+../Library/SPL/src/MDR32VF0xI_asm.S:66     .ram_text.DELAY_CycleCounter_WaitTicksAsm:0000000e .L0 
+                  .debug_line_str:00000000 .L0 
+                  .debug_line_str:00000078 .L0 
+                  .debug_line_str:0000008b .L0 
+../Library/SPL/src/MDR32VF0xI_asm.S:54     .ram_text.DELAY_PROGRAM_WaitLoopsAsm:00000008 .L0 
+../Library/SPL/src/MDR32VF0xI_asm.S:66     .ram_text.DELAY_CycleCounter_WaitTicksAsm:00000010 .L0 
+                  .debug_rnglists:0000000c .L0 
+.ram_text.DELAY_PROGRAM_WaitLoopsAsm:00000000 .L0 
+.ram_text.DELAY_CycleCounter_WaitTicksAsm:00000000 .L0 
+.ram_text.DELAY_PROGRAM_WaitLoopsAsm:00000000 .L0 
+../Library/SPL/src/MDR32VF0xI_asm.S:54     .ram_text.DELAY_PROGRAM_WaitLoopsAsm:00000008 .L0 
+.ram_text.DELAY_CycleCounter_WaitTicksAsm:00000000 .L0 
+../Library/SPL/src/MDR32VF0xI_asm.S:66     .ram_text.DELAY_CycleCounter_WaitTicksAsm:00000010 .L0 
+                       .debug_str:00000000 .L0 
+                       .debug_str:00000024 .L0 
+                       .debug_str:0000009c .L0 
+
+NO UNDEFINED SYMBOLS

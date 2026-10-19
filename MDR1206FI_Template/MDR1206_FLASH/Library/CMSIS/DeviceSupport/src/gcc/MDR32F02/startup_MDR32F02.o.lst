@@ -1,0 +1,151 @@
+   1              	# 0 "../Library/CMSIS/DeviceSupport/src/gcc/MDR32F02/startup_MDR32F02.S"
+   2              	# 1 "C:\\Users\\aleks\\Desktop\\hack_milandr\\mdr1206\\ExampleProjects\\MDR32VF0xI\\MDR1206\\Eclips
+   0              	
+   0              	
+   0              	
+   1              	/**
+   2              	 *******************************************************************************
+   3              	 * @file    startup_MDR32F02.S
+   4              	 * @author  Milandr Application Team
+   5              	 * @version V0.2.0
+   6              	 * @date    24/06/2025
+   7              	 * @brief   Core device startup file for MDR32F02.
+   8              	 *******************************************************************************
+   9              	 * <br><br>
+  10              	 *
+  11              	 * THE PRESENT FIRMWARE IS FOR GUIDANCE ONLY. IT AIMS AT PROVIDING CUSTOMERS
+  12              	 * WITH CODING INFORMATION REGARDING MILANDR'S PRODUCTS IN ORDER TO FACILITATE
+  13              	 * THE USE AND SAVE TIME. MILANDR SHALL NOT BE HELD LIABLE FOR ANY
+  14              	 * DIRECT, INDIRECT OR CONSEQUENTIAL DAMAGES RESULTING
+  15              	 * FROM THE CONTENT OF SUCH FIRMWARE AND/OR A USE MADE BY CUSTOMERS OF THE
+  16              	 * CODING INFORMATION CONTAINED HEREIN IN THEIR PRODUCTS.
+  17              	 *
+  18              	 * <h2><center>&copy; COPYRIGHT 2025 Milandr</center></h2>
+  19              	 *******************************************************************************
+  20              	 */
+  21              	
+  22              	#if defined ( __GNUC__ ) /* GCC compiler. */
+  23              	
+  24              	#include "system_MDR32VF0xI_config.h"
+   1              	/**
+   2              	 ******************************************************************************
+   3              	 * @file    system_MDR32VF0xI_config.h
+   4              	 * @author  Milandr Application Team
+   5              	 * @version V0.2.0
+   6              	 * @date    15/04/2025
+   7              	 * @brief   Device Peripheral Access Layer Configuration File for MDR32VF0xI.
+   8              	 ******************************************************************************
+   9              	 * <br><br>
+  10              	 *
+  11              	 * THE PRESENT FIRMWARE IS FOR GUIDANCE ONLY. IT AIMS AT PROVIDING CUSTOMERS
+  12              	 * WITH CODING INFORMATION REGARDING MILANDR'S PRODUCTS IN ORDER TO FACILITATE
+  13              	 * THE USE AND SAVE TIME. MILANDR SHALL NOT BE HELD LIABLE FOR ANY
+  14              	 * DIRECT, INDIRECT OR CONSEQUENTIAL DAMAGES RESULTING
+  15              	 * FROM THE CONTENT OF SUCH FIRMWARE AND/OR A USE MADE BY CUSTOMERS OF THE
+  16              	 * CODING INFORMATION CONTAINED HEREIN IN THEIR PRODUCTS.
+  17              	 *
+  18              	 * <h2><center>&copy; COPYRIGHT 2025 Milandr</center></h2>
+  19              	 ******************************************************************************
+  20              	 */
+  21              	
+  22              	/* Define to prevent recursive inclusion -------------------------------------*/
+  23              	#ifndef SYSTEM_MDR32VF0xI_CONFIG_H
+  24              	#define SYSTEM_MDR32VF0xI_CONFIG_H
+  25              	
+  26              	#if !defined(__ASSEMBLER__) && !defined(__IASMRISCV__)
+  27              	
+  28              	#ifdef __cplusplus
+  29              	extern "C" {
+  30              	#endif
+  31              	
+  32              	/* Includes ------------------------------------------------------------------*/
+  33              	#include "stdint.h"
+  34              	
+  35              	#endif /* !__ASSEMBLER__ && !__IASMRISCV__ */
+  36              	
+  37              	/** Use the Standard Peripheral Library (SPL).
+  38              	    The SPL is used to set target system clock parameters.
+  39              	    Comment out the line below if you will not be using the SPL.
+  40              	    In which case the code will only be based on direct access to peripheral registers. */
+  41              	#define USE_MDR32VF0xI_SPL
+  42              	// </c>
+  43              	
+  44              	#if defined(USE_MDR32VF0xI_SPL)
+  45              	#include "MDR32VF0xI_config.h"
+   1              	/**
+   2              	 *******************************************************************************
+   3              	 * @file    MDR32VF0xI_config.h
+   4              	 * @author  Milandr Application Team
+   5              	 * @version V0.2.0
+   6              	 * @date    14/05/2025
+   7              	 * @brief   Standard Peripherals Library configuration file.
+   8              	 *******************************************************************************
+   9              	 * <br><br>
+  10              	 *
+  11              	 * THE PRESENT FIRMWARE IS FOR GUIDANCE ONLY. IT AIMS AT PROVIDING CUSTOMERS
+  12              	 * WITH CODING INFORMATION REGARDING MILANDR'S PRODUCTS IN ORDER TO FACILITATE
+  13              	 * THE USE AND SAVE TIME. MILANDR SHALL NOT BE HELD LIABLE FOR ANY
+  14              	 * DIRECT, INDIRECT OR CONSEQUENTIAL DAMAGES RESULTING
+  15              	 * FROM THE CONTENT OF SUCH FIRMWARE AND/OR A USE MADE BY CUSTOMERS OF THE
+  16              	 * CODING INFORMATION CONTAINED HEREIN IN THEIR PRODUCTS.
+  17              	 *
+  18              	 * <h2><center>&copy; COPYRIGHT 2025 Milandr</center></h2>
+  19              	 *******************************************************************************
+  20              	 */
+  21              	
+  22              	/**
+  23              	 * @mainpage MDR32VF0xI Standard Peripherals Library.
+  24              	 * MDR32VF0xI Standard Peripherals Library is a package consisting of
+  25              	 * all standard peripheral device drivers for MDR32F02 and MDR1206 microcontrollers.
+  26              	 * This library is a firmware package which contains a collection of routines,
+  27              	 * data structures and macros covering the features of Milandr MDR32VF0xI
+  28              	 * peripherals. It includes a description of the device drivers plus a set of
+  29              	 * examples for each peripheral. The firmware library allows any device to be
+  30              	 * used in the user application without the need for in-depth study of each
+  31              	 * peripherals specifications. Using the Standard Peripherals Library has two
+  32              	 * advantages: it saves significant time that would otherwise be spent in
+  33              	 * coding, while simultaneously reducing application development and
+  34              	 * integration costs.
+  35              	 */
+  36              	
+  37              	/* Define to prevent recursive inclusion -------------------------------------*/
+  38              	#ifndef MDR32VF0xI_CONFIG_H
+  39              	#define MDR32VF0xI_CONFIG_H
+  40              	
+  41              	#if !defined(__ASSEMBLER__) && !defined(__IASMRISCV__)
+  42              	
+  43              	#ifdef __cplusplus
+  44              	extern "C" {
+  45              	#endif
+  46              	
+  47              	/* Includes ------------------------------------------------------------------*/
+  48              	#include "stdint.h"
+  49              	
+  50              	/** MDR32VF0xI SPL version numbers - major, minor, patch. */
+  51              	#define _MDR32VF0xI_SPL_VERSION_MAJOR ((uint32_t)0) /*!< [23:16] - major version. */
+  52              	#define _MDR32VF0xI_SPL_VERSION_MINOR ((uint32_t)2) /*!< [15:8]  - minor version. */
+  53              	#define _MDR32VF0xI_SPL_VERSION_PATCH ((uint32_t)0) /*!< [7:0]   - patch version. */
+  54              	
+  55              	/** MDR32VF0xI SPL version number (combined value). */
+  56              	#define MDR32VF0xI_SPL_VERSION ((_MDR32VF0xI_SPL_VERSION_MAJOR << 16) | \
+  57              	                                (_MDR32VF0xI_SPL_VERSION_MINOR << 8) |  \
+  58              	                                (_MDR32VF0xI_SPL_VERSION_PATCH))
+  59              	
+  60              	#endif /* !__ASSEMBLER__ && !__IASMRISCV__ */
+  61              	
+  62              	/** MCU selection.
+  63              	    USE_MDR32F02_REV_1X: MDR32F02 rev.1.0 and rev.1.1,
+  64              	    USE_MDR32F02_REV_2:  MDR32F02 rev.2.0,
+  65              	    USE_MDR1206FI:       MDR1206FI,
+  66              	    USE_MDR1206AFI:      MDR1206AFI,
+  67              	    USE_MDR1206:         MDR1206FI or MDR1206AFI (Proper functions which differ in functionality wi
+  68              	// #define USE_MDR32F02_REV_1X
+  69              	// #define USE_MDR32F02_REV_2
+  70              	// #define USE_MDR1206FI
+  71              	// #define USE_MDR1206AFI
+  72              	#define USE_MDR1206
+  73              	
+  46              	#else
+NO DEFINED SYMBOLS
+
+NO UNDEFINED SYMBOLS
